@@ -1,8 +1,13 @@
+import Accordian from './components/Accordian';
+import Items from './components/Items';
+
 function App() {
     return (
-        <div className="App">
-            <h1>hello</h1>
-        </div>
+        <main>
+            <h1>Spending Tracker</h1>
+            <Accordian />
+            <Items />
+        </main>
     );
 }
 
