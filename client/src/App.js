@@ -1,11 +1,12 @@
-import Accordian from './components/Accordian';
+import Dropdown from './components/Dropdown';
 import Items from './components/Items';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
     return (
         <main>
             <h1>Spending Tracker</h1>
-            <Accordian />
+            <Dropdown />
             <Items />
         </main>
     );

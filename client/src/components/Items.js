@@ -1,35 +1,40 @@
 import React from 'react';
-import Button from './Button';
+import Buttons from './Buttons';
+import Table from 'react-bootstrap/Table';
 
 const Items = () => {
     return (
-        <section>
-            <ul className="grid-five">
-                <li>
-                    <Button type="button" text="Date" />
-                </li>
-                <li>
-                    <Button type="button" text="Price" />
-                </li>
-                <li>
-                    <Button type="button" text="Item" />
-                </li>
-                <li>
-                    <Button type="button" text="Store" />
-                </li>
-                <li>
-                    <Button type="button" text="Category" />
-                </li>
-            </ul>
+        <Table striped borded hover responsive>
+            <thead>
+                <tr>
+                    <th>
+                        <Buttons type="button" text="Date" />
+                    </th>
+                    <th>
+                        <Buttons type="button" text="Price" />
+                    </th>
+                    <th>
+                        <Buttons type="button" text="Item" />
+                    </th>
+                    <th>
+                        <Buttons type="button" text="Store" />
+                    </th>
+                    <th>
+                        <Buttons type="button" text="Category" />
+                    </th>
+                </tr>
+            </thead>
 
-            <ul className="grid-five">
-                <li>one</li>
-                <li>one</li>
-                <li>one</li>
-                <li>one</li>
-                <li>one</li>
-            </ul>
-        </section>
+            <tbody>
+                <tr>
+                    <td>the date</td>
+                    <td>the price</td>
+                    <td>the item</td>
+                    <td>the store</td>
+                    <td>the category</td>
+                </tr>
+            </tbody>
+        </Table>
     );
 };
 

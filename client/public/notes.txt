@@ -1,0 +1,12 @@
+<div className="accordion accordion-flush" id="dropdownForm">
+            <div className="accordion-item">
+                <div className="accordion-header" id="flush-headingOne">
+                   <Buttons type="button" text="Add An Item" className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne"/>
+                </div>
+                <div id="flush-collapseOne" className="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#dropdownForm">
+                    <div className="accordion-body">
+                        Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.
+                    </div>
+                </div>
+            </div>   
+        </div>
