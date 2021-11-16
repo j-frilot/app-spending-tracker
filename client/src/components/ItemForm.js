@@ -1,87 +1,113 @@
 import React, { useState } from 'react';
-import Form from 'react-bootstrap/Form';
+import Items from './Items';
 import Buttons from './Buttons';
+import Form from 'react-bootstrap/Form';
 
 const ItemForm = () => {
-    const [date, setDate] = useState('');
-    const [price, setPrice] = useState('');
-    const [category, setCategory] = useState('');
-    const [item, setItem] = useState('');
-    const [store, setStore] = useState('');
+    const [inputs, setInputs] = useState({
+        date: '',
+        price: '',
+        category: '',
+        item: '',
+        store: ''
+    });
 
-    const submitForm = (e) => {
+    const getInputs = (e) => {
         e.preventDefault();
-
-        console.log(date, price, category, item, store);
-        setDate('');
-        setPrice('');
-        setCategory('');
-        setItem('');
-        setStore('');
+        setInputs({
+            ...inputs,
+            [e.target.name]: e.target.value
+        });
     };
 
+    // const [date, setDate] = useState('');
+    // const [price, setPrice] = useState('');
+    // const [category, setCategory] = useState('');
+    // const [item, setItem] = useState('');
+    // const [store, setStore] = useState('');
+
+    // let submittedData;
+
+    // const submitForm = (e) => {
+    //     e.preventDefault();
+
+    //     setDate('');
+    //     setPrice('');
+    //     setCategory('');
+    //     setItem('');
+    //     setStore('');
+
+    //     // submittedData.push(date, price, category, item, store);
+    // };
+
     return (
-        <Form action="" onSubmit={submitForm}>
-            <div>
-                <Form.Label htmlFor="date">Date</Form.Label>
-                <Form.Control
-                    type="date"
-                    value={date}
-                    onChange={(e) => setDate(e.target.value)}
-                    name="date"
-                />
-            </div>
+        <>
+            <Form action="" onSubmit={getInputs}>
+                <Form.Group>
+                    <Form.Label>Date</Form.Label>
+                    <Form.Control
+                        type="date"
+                        value={inputs.date}
+                        onChange={getInputs}
+                        name="date"
+                    />
+                </Form.Group>
 
-            <div>
-                <Form.Label htmlFor="price">Price</Form.Label>
-                <Form.Control
-                    type="number"
-                    value={price}
-                    onChange={(e) => setPrice(e.target.value)}
-                    name="price"
-                    placeholder="$19.99"
-                    required
-                />
-            </div>
+                <Form.Group>
+                    <Form.Label>Price</Form.Label>
+                    <Form.Control
+                        type="number"
+                        min="0.00"
+                        max="10000.00"
+                        step="0.01"
+                        value={inputs.price}
+                        onChange={getInputs}
+                        name="price"
+                        placeholder="$19.99"
+                        required
+                    />
+                </Form.Group>
 
-            <div>
-                <Form.Label htmlFor="category">Category</Form.Label>
-                <Form.Select
-                    name="category"
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
-                >
-                    <option value>Selected Category</option>
-                    <option value="groceries">Groceries</option>
-                    <option value="bills">Bills</option>
-                </Form.Select>
-            </div>
+                <Form.Group>
+                    <Form.Label>Category</Form.Label>
+                    <Form.Select
+                        name="category"
+                        value={inputs.category}
+                        onChange={getInputs}
+                    >
+                        <option value>Selected Category</option>
+                        <option value="groceries">Groceries</option>
+                        <option value="bills">Bills</option>
+                    </Form.Select>
+                </Form.Group>
 
-            <div>
-                <Form.Label htmlFor="item">Item</Form.Label>
-                <Form.Control
-                    type="text"
-                    value={item}
-                    onChange={(e) => setDate(e.target.value)}
-                    name="item"
-                    placeholder="Groceries"
-                    required
-                />
-            </div>
+                <Form.Group>
+                    <Form.Label>Item</Form.Label>
+                    <Form.Control
+                        type="text"
+                        value={inputs.item}
+                        onChange={getInputs}
+                        name="item"
+                        placeholder="Groceries"
+                        required
+                    />
+                </Form.Group>
 
-            <div>
-                <Form.Label htmlFor="store">Store</Form.Label>
-                <Form.Control
-                    type="text"
-                    value={store}
-                    onChange={(e) => setStore(e.target.value)}
-                    name="store"
-                    placeholder="Food Mart"
-                    required
-                />
-            </div>
-            <Buttons type="submit" value="submit" text="Add" />
-        </Form>
+                <Form.Group>
+                    <Form.Label>Store</Form.Label>
+                    <Form.Control
+                        type="text"
+                        value={inputs.store}
+                        onChange={getInputs}
+                        name="store"
+                        placeholder="Food Mart"
+                        required
+                    />
+                </Form.Group>
+                <Buttons type="submit" value="submit" text="Add" />
+            </Form>
+            <Items getInputs={inputs} />
+        </>
     );
 };
 
