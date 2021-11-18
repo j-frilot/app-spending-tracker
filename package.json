@@ -1,0 +1,19 @@
+{
+  "name": "spending-tracker",
+  "version": "1.0.0",
+  "description": "Spending Tracker is a small app that keeps track of recent purchases.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/j-frilot/spending-tracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/j-frilot/spending-tracker/issues"
+  },
+  "homepage": "https://github.com/j-frilot/spending-tracker#readme"
+}
