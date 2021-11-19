@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/j-frilot/spending-tracker/issues"
   },
-  "homepage": "https://github.com/j-frilot/spending-tracker#readme"
+  "homepage": "https://github.com/j-frilot/spending-tracker#readme",
+  "dependencies": {
+    "2": "^3.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "mysql": "^2.18.1"
+  }
 }

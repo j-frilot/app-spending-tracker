@@ -25,6 +25,8 @@ const spending_data = [
     }
 ];
 
+// console.log(spending_data);
+
 const addBtn = document.getElementById('add-button');
 
 const getItemsFromForm = (e) => {
@@ -49,7 +51,7 @@ const getItemsFromForm = (e) => {
     newItem.category = category.value;
 
     spending_data.push(newItem);
-    console.log(spending_data);
+    // console.log(spending_data);
 
     addItemToList(newItem);
 };
@@ -67,7 +69,10 @@ const clearForm = () => {
 const addItemToList = (newItem) => {
     const tableBody = document.getElementById('table-body');
 
-    tableBody.innerHTML += `<tr><th>${newItem[0]}</th><th>$${newItem[1]}</th><th>${newItem[2]}</th><th>${newItem[3]}</th><th>${newItem[4]}</th></tr>`;
+    const addedData = spending_data[spending_data.length - 1];
+    console.log(addedData.store);
+
+    tableBody.innerHTML += `<tr><td>${addedData.day}</td><td>$${addedData.price}</td><td>${addedData.item}</td><td>${addedData.store}</td><td>${addedData.category}</td></tr>`;
 };
 
 addBtn.addEventListener('click', (e) => {
