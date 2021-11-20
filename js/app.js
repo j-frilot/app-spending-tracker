@@ -1,47 +1,34 @@
-const spending_data = [
-    {
-        id: 1,
-        day: '2021-01-25',
-        price: '19.99',
-        item: 'sneakers',
-        store: 'shoe king',
-        category: 'clothing'
-    },
-    {
-        id: 2,
-        day: '2021-02-01',
-        price: '35.00',
-        item: 'gas',
-        store: 'quick stop',
-        category: 'gas'
-    },
-    {
-        id: 3,
-        day: '2021-04-04',
-        price: '899.50',
-        item: 'television',
-        store: 'electronic city',
-        category: 'house items'
+//FETCHING
+const tableBody = document.getElementById('table-body');
+async function getData() {
+    let url = 'http://localhost:5000/api/alldata';
+    try {
+        let response = await fetch(url);
+        let data = await response.json();
+        console.log(data);
+        return data;
+    } catch (error) {
+        console.log(error);
     }
-];
+}
 
-// console.log(spending_data);
+async function postData() {
+    let rows = await getData();
+    let html = '';
+    rows.forEach((row) => {
+        let addRow = `<tr><td>${row.day}</td><td>${row.price}</td><td>${row.item}</td><td>${row.store}</td><td>${row.category}</td></tr>`;
+        html += addRow;
+    });
+    tableBody.innerHTML = html;
+}
+
+postData();
+console.log(getData());
 
 const addBtn = document.getElementById('add-button');
 
 const getItemsFromForm = (e) => {
     e.preventDefault();
-    // console.log("getItemsFromForm Function");
-    // console.log(
-    //     `Item: ${item.value}, Store: ${store.value}, Price: $${price.value}, Date: ${date.value}, Category: ${category.value}`
-    // );
-
-    // const newItem = [];
-    // newItem.push(date.value);
-    // newItem.push(price.value);
-    // newItem.push(item.value);
-    // newItem.push(store.value);
-    // newItem.push(category.value);
 
     const newItem = {};
     newItem.day = date.value;
@@ -50,10 +37,11 @@ const getItemsFromForm = (e) => {
     newItem.store = store.value;
     newItem.category = category.value;
 
-    spending_data.push(newItem);
+    // spending_data.push(newItem);
     // console.log(spending_data);
 
-    addItemToList(newItem);
+    // addItemToList(newItem);
+    console.log(newItem);
 };
 
 //function to clear form fields
@@ -67,12 +55,30 @@ const clearForm = () => {
 
 //function to add new items to table
 const addItemToList = (newItem) => {
-    const tableBody = document.getElementById('table-body');
-
     const addedData = spending_data[spending_data.length - 1];
     console.log(addedData.store);
 
-    tableBody.innerHTML += `<tr><td>${addedData.day}</td><td>$${addedData.price}</td><td>${addedData.item}</td><td>${addedData.store}</td><td>${addedData.category}</td></tr>`;
+    // //FETCHING
+    // async function getData() {
+    //     let url = 'http:localhost:5000/api/alldata';
+    //     try {
+    //         let response = await fetch(url);
+    //         let data = await response.json();
+    //         console.log(data);
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
+
+    // async function postData() {
+    //     let rows = await getData();
+    //     let html = '';
+    //     rows.forEach((row) => {
+    //         let addRow = `<tr><td>${row.day}</td><td>${row.price}</td><td>${row.item}</td><td>${row.store}</td><td>${row.category}</td></tr>`;
+    //         html += addRow;
+    //     });
+    //     tableBody.innerHTML = html;
+    // }
 };
 
 addBtn.addEventListener('click', (e) => {
