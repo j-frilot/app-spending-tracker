@@ -11,6 +11,7 @@
             integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
             crossorigin="anonymous"
         />
+        <link rel="stylesheet" href="css/style.css" />
         <title>Spending Tracker</title>
     </head>
     <body class="container">
@@ -47,7 +48,7 @@
                             data-bs-parent="#accordianExample"
                         >
                             <div class="accordian-body">
-                                <form action="" id="add-item-form">
+                                <form method="post" id="add-item-form">
                                     <div class="row">
                                         <!-- DATE -->
                                         <div class="col input-group mb-3">
@@ -152,7 +153,10 @@
                 <table class="table table-striped" id="table">
                     <thead id="table-head">
                         <th scope="col"
-                            ><button type="button" class="btn btn-primary"
+                            ><button
+                                type="button"
+                                id="sort-date"
+                                class="btn btn-primary"
                                 >Date</button
                             ></th
                         >
@@ -177,11 +181,12 @@
                             ></th
                         >
                     </thead>
-                    <tbody id="table-body"> </tbody>
+                    <tbody id="table-body" class="table-body"> </tbody>
                 </table>
             </section>
         </main>
         <script src="js/app.js"></script>
+        <script src="js/sorting.js"></script>
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

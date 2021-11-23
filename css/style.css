@@ -1,0 +1,9 @@
+.table-body {
+    text-transform: capitalize;
+}
+
+.delete-button {
+    border: none;
+    background-color: red;
+    border-radius: 50%;
+}

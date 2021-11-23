@@ -1,32 +1,35 @@
-//FETCHING
+//FETCHING FULL SPENDING LOG FROM DB
 const tableBody = document.getElementById('table-body');
 async function getData() {
     let url = 'http://localhost:5000/api/alldata';
     try {
         let response = await fetch(url);
         let data = await response.json();
-        console.log(data);
+        // console.log('Success: ', data);
         return data;
     } catch (error) {
-        console.log(error);
+        console.log('ERROR: ', error);
     }
 }
 
 async function postData() {
     let rows = await getData();
     let html = '';
+    // console.log(rows);
     rows.forEach((row) => {
-        let addRow = `<tr><td>${row.day}</td><td>${row.price}</td><td>${row.item}</td><td>${row.store}</td><td>${row.category}</td></tr>`;
+        let addRow = `<tr><td><button class="delete-button" type="submit">(D)  </button> ${row.Day}</td><td>${row.Price}</td><td>${row.item}</td><td>${row.store}</td><td>${row.category}</td></tr>`;
         html += addRow;
     });
     tableBody.innerHTML = html;
 }
 
 postData();
-console.log(getData());
+
+////////////////////////
 
 const addBtn = document.getElementById('add-button');
 
+// GETTING VALUES FROM FORM TO ADD ITEM
 const getItemsFromForm = (e) => {
     e.preventDefault();
 
@@ -37,14 +40,11 @@ const getItemsFromForm = (e) => {
     newItem.store = store.value;
     newItem.category = category.value;
 
-    // spending_data.push(newItem);
-    // console.log(spending_data);
-
-    // addItemToList(newItem);
-    console.log(newItem);
+    console.log(newItem); //an object
+    addItemToList(newItem);
 };
 
-//function to clear form fields
+// CLEARING FORM AFTER HITTING BUTTON ON FORM
 const clearForm = () => {
     item.value = '';
     store.value = '';
@@ -53,35 +53,21 @@ const clearForm = () => {
     category.value = '';
 };
 
-//function to add new items to table
+// ADDING THE NEW DATA TO THE DB AND ADD IT TO TABLE BELOW
 const addItemToList = (newItem) => {
-    const addedData = spending_data[spending_data.length - 1];
-    console.log(addedData.store);
-
-    // //FETCHING
-    // async function getData() {
-    //     let url = 'http:localhost:5000/api/alldata';
-    //     try {
-    //         let response = await fetch(url);
-    //         let data = await response.json();
-    //         console.log(data);
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }
-
-    // async function postData() {
-    //     let rows = await getData();
-    //     let html = '';
-    //     rows.forEach((row) => {
-    //         let addRow = `<tr><td>${row.day}</td><td>${row.price}</td><td>${row.item}</td><td>${row.store}</td><td>${row.category}</td></tr>`;
-    //         html += addRow;
-    //     });
-    //     tableBody.innerHTML = html;
-    // }
+    fetch('http://localhost:5000/api/adddata', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newItem)
+    }).then((res) => {
+        console.log('complete', res);
+    });
 };
 
 addBtn.addEventListener('click', (e) => {
     getItemsFromForm(e);
     clearForm();
 });
+getData();
+
+// CLICKING DELETE BUTTON AND DELETING ROW
