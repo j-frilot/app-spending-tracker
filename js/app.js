@@ -14,16 +14,27 @@ async function getData() {
 
 async function postData() {
     let rows = await getData();
-    let html = '';
+
+    let html = `<tr><td>Date</td><td>Total</td><td>Other</td><td>Other</td><td>Other</td></tr>`;
     // console.log(rows);
     rows.forEach((row) => {
-        let addRow = `<tr><td><button class="delete-button" type="submit">(D)  </button> ${row.Day}</td><td>${row.Price}</td><td>${row.item}</td><td>${row.store}</td><td>${row.category}</td></tr>`;
+        // tableBody.innerHTML = `<tr><td>Date</td><td>Total</td><td>Other</td><td>Other</td><td>Other</td></tr>`;
+        let addRow = `<tr><td> ${row.Day}</td><td>${row.Price}</td><td>${row.item}</td><td>${row.store}</td><td>${row.category}</td></tr>`;
         html += addRow;
+        // deleteRow(addRow);
     });
     tableBody.innerHTML = html;
 }
 
 postData();
+
+// // CLICKING DELETE BUTTON AND DELETING ROW
+// const deleteRow = (addRow) => {
+//     const deleteButton = document.querySelector('[data-index-id=`${row.id}`]');
+//     deleteButton.addEventListener('click', (e) => {
+//         console.log(e); //
+//     });
+// };
 
 ////////////////////////
 
@@ -69,5 +80,3 @@ addBtn.addEventListener('click', (e) => {
     clearForm();
 });
 getData();
-
-// CLICKING DELETE BUTTON AND DELETING ROW

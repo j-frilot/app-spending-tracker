@@ -6,7 +6,7 @@ const queries = {
     allData: (req, res) => {
         try {
             pool.query(
-                "SELECT DATE_FORMAT(day, '%Y/%m/%d') AS Day, CONCAT('$', FORMAT(price, 2)) AS Price, item, store, category FROM spending_data ORDER BY Day DESC",
+                "SELECT id, DATE_FORMAT(day, '%Y/%m/%d') AS Day, CONCAT('$', FORMAT(price, 2)) AS Price, item, store, category FROM spending_data ORDER BY Day DESC",
                 (error, results) => {
                     if (!error) {
                         if (results.length == 1) {
@@ -28,7 +28,7 @@ const queries = {
     dayAsc: (req, res) => {
         try {
             pool.query(
-                "SELECT DATE_FORMAT(day, '%Y/%m/%d') AS Day, CONCAT('$', FORMAT(price, 2)) AS Price, item, store, category FROM spending_data ORDER BY Day ASC",
+                "SELECT id, DATE_FORMAT(day, '%Y/%m/%d') AS Day, CONCAT('$', FORMAT(price, 2)) AS Price, item, store, category FROM spending_data ORDER BY Day ASC",
                 (error, results) => {
                     if (!error) {
                         if (results.length == 1) {
